@@ -26,10 +26,15 @@
 
     body {
         .app {
-            background-color: var(--main);
-
-            height: 100vh;
+            //background-color: var(--main);
+            background-image: url("../assets/bg.jpeg");
+            background-repeat: no-repeat;
             width: 100vw;
+            height:100vh;
+            background-position: center center;
+            background-size: cover;
+            margin:auto;
+            padding:0;
 
             #signature {
                 position: absolute;
