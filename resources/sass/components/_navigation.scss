@@ -14,5 +14,10 @@
         &:hover {
             color: $splash;
         }
+        transition: color 0.2s;
+    }
+
+    .active {
+        color: $splash;
     }
 }

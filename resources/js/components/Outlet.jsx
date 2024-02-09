@@ -8,7 +8,9 @@ const Outlet = () => {
         <>
             <Logo fill={'#333344'}/>
             <Navigation/>
-            <ReactOutlet/>
+            <div className="outlet">
+                <ReactOutlet/>
+            </div>
         </>
     )
 }

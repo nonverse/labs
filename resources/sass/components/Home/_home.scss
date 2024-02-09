@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    margin:auto;
+    margin: auto;
 
     #hero {
         display: grid;
@@ -64,8 +64,15 @@
         text-decoration: none;
         color: #ECF0F3;
         font-weight: lighter;
+
         &:hover {
             color: $splash;
         }
+
+        transition: color 0.2s;
+    }
+
+    .active {
+        color: $splash;
     }
 }

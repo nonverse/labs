@@ -26,10 +26,18 @@
 
     body {
         .app {
-            //background-color: var(--main);
+            background-color: var(--main);
             width: 100vw;
             height:100vh;
             padding:0;
+
+            .outlet {
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
             #signature {
                 position: absolute;
