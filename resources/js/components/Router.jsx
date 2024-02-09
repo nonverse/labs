@@ -1,6 +1,8 @@
 import {Route, Routes, useLocation} from "react-router";
 import {AnimatePresence} from "framer-motion";
 import Home from "./Home/Home.jsx";
+import Logo from "../elements/Logo.jsx";
+import Outlet from "./Outlet.jsx";
 
 const Router = () => {
 
@@ -10,7 +12,8 @@ const Router = () => {
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
                 // Views
-                <Route path={"/"} element={<Home/>}/>
+                <Route exact strict path={"/"} element={<Home/>}/>
+                <Route path={"/*"} element={<Outlet/>}/>
             </Routes>
         </AnimatePresence>
     )

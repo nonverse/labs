@@ -18,6 +18,7 @@ import api from "../scripts/api.js";
 import Loader from "./Loader.jsx";
 import config from "../config.json"
 import UserIconStatic from "./User/UserIconStatic";
+import HomeNavigation from "./Home/HomeNavigation.jsx";
 
 function Index() {
 
@@ -138,7 +139,6 @@ function Index() {
         >
             {(apiStatus.success || config.app.renderWithoutApiSuccess) ?
                 <>
-                    <Logo/>
                     <BrowserRouter>
                         <div className="container">
                             {/*

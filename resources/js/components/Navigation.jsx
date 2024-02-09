@@ -1,9 +1,9 @@
 import {NavLink} from "react-router-dom";
 
-const HomeNavigation = () => {
+const Navigation = () => {
 
     return (
-        <nav id="home-navigation">
+        <nav id="navigation">
             <NavLink to="/">/</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/experiences">Experiences</NavLink>
@@ -13,4 +13,4 @@ const HomeNavigation = () => {
     )
 }
 
-export default HomeNavigation
+export default Navigation

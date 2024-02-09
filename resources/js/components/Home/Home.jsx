@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import {useState} from "react";
 import Hero from "./Hero.jsx";
 import HomeNavigation from "./HomeNavigation.jsx";
+import Logo from "../../elements/Logo.jsx";
 
 const Home = () => {
 
@@ -11,10 +12,13 @@ const Home = () => {
     })
 
     return (
-        <div id="home">
-            <Hero/>
-            <HomeNavigation/>
-        </div>
+        <>
+            <Logo fill='#ECF0F3'/>
+            <div id="home">
+                <Hero/>
+                <HomeNavigation/>
+            </div>
+        </>
     )
 }
 
