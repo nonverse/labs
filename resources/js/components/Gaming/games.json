@@ -1,0 +1,9 @@
+[
+    {
+        "key": "minecraft",
+        "page": "/minecraft",
+        "image": "http://[::1]:5175/resources/assets/images/minecraft-landscape.jpeg",
+        "title": "Minecraft Server",
+        "description": "The official Nonverse Minecraft server (Experiment)"
+    }
+]

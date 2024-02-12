@@ -1,6 +1,7 @@
 import Logo from "../elements/Logo.jsx";
 import {Outlet as ReactOutlet} from "react-router";
 import Navigation from "./Navigation.jsx";
+import {motion} from "framer-motion";
 
 const Outlet = () => {
 
@@ -8,9 +9,14 @@ const Outlet = () => {
         <>
             <Logo fill={'#333344'}/>
             <Navigation/>
-            <div className="outlet">
+            <motion.div
+                className="outlet"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{duration: .15}}
+            >
                 <ReactOutlet/>
-            </div>
+            </motion.div>
         </>
     )
 }
