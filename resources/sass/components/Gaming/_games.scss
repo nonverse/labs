@@ -3,6 +3,7 @@
         width: auto;
         height: 5rem;
         opacity: .75;
+        transition: opacity .3s;
 
         &:hover {
             opacity: 1;
