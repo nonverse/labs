@@ -25,7 +25,7 @@ const Minecraft = ({apiStatus}) => {
                     endless possibilities limited only by your imagination!
                     <br/><br/>
                     This server was created to test the limits of interoperability between the HTTP based Nonverse REST
-                    API and application running on completely different technology stacks such as the Java Runtime
+                    API and applications running on completely different technology stacks such as the Java Runtime
                     Environment.
                     <br/><br/>
                     Overtime the server has grown to support a number of creative methodologies enabled by controlling
