@@ -1,1 +1,41 @@
 @import "games";
+
+.game-card {
+    width: auto;
+    height: 5rem;
+    opacity: .75;
+    transition: opacity .3s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    h1 {
+        font-weight: normal;
+        color: var(--main);
+    }
+    h2 {
+        font-weight: lighter;
+        color: rgba(var(--main-rgb), .5);
+    }
+}
+
+.game-description {
+    color: rgba(var(--font-color-rgb), .5);
+    margin-top: 2rem;
+    padding: 2rem;
+    //text-align: center;
+}
+
+#game-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    margin-left: 2rem;
+
+    #game-back {
+        color: var(--font-color);
+    }
+}

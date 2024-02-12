@@ -4,6 +4,7 @@ import Home from "./Home/Home.jsx";
 import Logo from "../elements/Logo.jsx";
 import Outlet from "./Outlet.jsx";
 import Gaming from "./Gaming/Gaming.jsx";
+import Minecraft from "./Gaming/Minecraft/Minecraft.jsx";
 
 const Router = () => {
 
@@ -16,6 +17,10 @@ const Router = () => {
                 <Route exact strict path={"/"} element={<Home/>}/>
                 <Route path={"/"} element={<Outlet/>}>
                     <Route path={"/gaming"} element={<Gaming/>}/>
+
+                    // Gaming
+                    <Route path={"/gaming/minecraft"} element={<Minecraft/>}/>
+
                     <Route path={"/*"} element={<></>}/>
                 </Route>
             </Routes>

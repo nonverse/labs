@@ -1,21 +1,4 @@
-#games {
-    .game-card {
-        width: auto;
-        height: 5rem;
-        opacity: .75;
-        transition: opacity .3s;
-
-        &:hover {
-            opacity: 1;
-        }
-
-        h1 {
-            font-weight: normal;
-            color: var(--main);
-        }
-        h2 {
-            font-weight: lighter;
-            color: rgba(var(--main-rgb), .5);
-        }
-    }
+#minecraft-cta {
+    width: max-content;
+    //transform: translateX(-50%);
 }
