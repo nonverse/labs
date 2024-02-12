@@ -1,5 +1,6 @@
 import {useSelector} from "react-redux";
 import {AnimatePresence} from "framer-motion";
+import MinecraftSetupModal from "./Gaming/Minecraft/MinecraftSetupModal.jsx";
 
 const ModalPortal = () => {
 
@@ -14,7 +15,7 @@ const ModalPortal = () => {
      * @type {{modal_key: JSX.Element}}
      */
     const modalArray = {
-
+        'minecraft-setup': <MinecraftSetupModal/>,
     }
 
     return (

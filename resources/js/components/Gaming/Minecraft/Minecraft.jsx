@@ -2,19 +2,20 @@ import ContentContainer from "../../ContentContainer.jsx";
 import CardLarge from "../../../elements/CardLarge.jsx";
 import image from "../../../../assets/images/minecraft-landscape.jpeg"
 import Button from "../../../elements/Button.jsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import InLineButton from "../../../elements/InLineButton.jsx";
 import {useNavigate} from "react-router";
-import auth from "../../../scripts/auth.js";
 import helpers from "../../../scripts/helpers/helpers.js";
+import {renderModal} from "../../../state/app/modal.js";
 
-const Minecraft = () => {
+const Minecraft = ({apiStatus}) => {
 
     const user = useSelector(state => state.user.value)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     return (
-        <ContentContainer heading="Minecraft Server" subHeading="The official Nonverse Minecraft server (Experiment)">
+        <ContentContainer heading="Minecraft Server" subHeading="The official Nonverse Minecraft server (Experiment)" loading={apiStatus.called}>
             <CardLarge className="game-card" image={image}/>
             <div className="game-description">
                 <p>
@@ -37,7 +38,7 @@ const Minecraft = () => {
             <div id="game-actions">
                 <Button id="minecraft-cta" onClick={() => {
                     if (user) {
-                        //
+                        dispatch(renderModal({id: 'minecraft-setup'}))
                     } else {
                         window.location = `${import.meta.env.VITE_AUTH_SERVER}?${helpers.getRedirectQuery()}`
                     }

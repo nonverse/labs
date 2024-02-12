@@ -89,6 +89,10 @@
             width: 40vw !important;
             padding-right: 0 !important;
             transform: none !important;
+
+            p {
+                color: rgba(var(--font-color-rgb), .5);
+            }
         }
     }
 }

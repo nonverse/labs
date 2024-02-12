@@ -159,7 +159,7 @@ function Index() {
                             <div className="content-wrapper">
                                 <ModalPortal/>
                                 <NotificationPortal/>
-                                <Router/>
+                                <Router apiStatus={apiStatus}/>
                             </div>
                         </div>
                     </BrowserRouter>

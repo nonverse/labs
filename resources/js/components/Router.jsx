@@ -6,7 +6,7 @@ import Outlet from "./Outlet.jsx";
 import Gaming from "./Gaming/Gaming.jsx";
 import Minecraft from "./Gaming/Minecraft/Minecraft.jsx";
 
-const Router = () => {
+const Router = ({apiStatus}) => {
 
     const location = useLocation()
 
@@ -19,7 +19,7 @@ const Router = () => {
                     <Route path={"/gaming"} element={<Gaming/>}/>
 
                     // Gaming
-                    <Route path={"/gaming/minecraft"} element={<Minecraft/>}/>
+                    <Route path={"/gaming/minecraft"} element={<Minecraft apiStatus={apiStatus}/>}/>
 
                     <Route path={"/*"} element={<></>}/>
                 </Route>
