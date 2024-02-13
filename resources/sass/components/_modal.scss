@@ -83,6 +83,11 @@
                     color: rgba(var(--font-color-rgb), .5);
                 }
             }
+
+            .digit-input-wrapper {
+                //background-color: #6951FF;
+                align-items: center;
+            }
         }
 
         .content {

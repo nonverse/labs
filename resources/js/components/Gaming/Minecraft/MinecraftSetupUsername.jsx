@@ -3,13 +3,16 @@ import Form from "../../../elements/Form.jsx";
 import Field from "../../../elements/Field.jsx";
 import validate from "../../../scripts/validate.js";
 
-const MinecraftSetupUsername = ({advance}) => {
+const MinecraftSetupUsername = ({advance, setData}) => {
 
     return (
         <Formik initialValues={{
             username: ''
-        }} onSubmit={() => {
-
+        }} onSubmit={(values) => {
+            setData({
+                username: values.username
+            })
+            advance()
         }}>
             {({errors}) => (
                 <Form id="screen-modal-form" cta="Continue">

@@ -2,8 +2,11 @@ import Logo from "../elements/Logo.jsx";
 import {Outlet as ReactOutlet} from "react-router";
 import Navigation from "./Navigation.jsx";
 import {motion} from "framer-motion";
+import {useSelector} from "react-redux";
 
 const Outlet = () => {
+
+    const settings = useSelector(state => (state.application.settings.value))
 
     return (
         <>

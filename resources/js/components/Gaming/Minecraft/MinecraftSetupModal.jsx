@@ -1,16 +1,16 @@
 import ScreenModal from "../../ScreenModal.jsx";
-import {Formik} from "formik";
-import Form from "../../../elements/Form.jsx";
-import Field from "../../../elements/Field.jsx";
-import validate from "../../../scripts/validate.js";
 import {useState} from "react";
 import MinecraftSetupUsername from "./MinecraftSetupUsername.jsx";
+import MinecraftSetupConfirm from "./MinecraftSetupConfirm.jsx";
 
 const MinecraftSetupModal = () => {
 
+    const [data, setData] = useState({})
+
     const [state, setState] = useState(0)
     const views = {
-        0: <MinecraftSetupUsername advance={advance}/>,
+        0: <MinecraftSetupUsername advance={advance} setData={setData}/>,
+        1: <MinecraftSetupConfirm data={data}/>
     }
 
     function advance() {
