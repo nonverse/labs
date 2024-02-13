@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 | API Routes
 |--------------------------------------------------------------------------
 |
+| Endpoint: https://api.nonverse.net/labs
 |
 */
 
@@ -19,6 +20,7 @@ Route::get('/', function () {
         'environment' => 'closed_development',
         'version' => env('APP_VERSION'),
         'base_route' => '/labs',
-        'user' => null,
     ]);
 });
+
+Route::prefix('minecraft')->group(base_path('routes/minecraft.php'));

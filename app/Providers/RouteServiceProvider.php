@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\VerifyApiRequest;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->routes(function () {
-            Route::middleware('api')
+            Route::middleware(['api', VerifyApiRequest::class])
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
             Route::middleware('web')
