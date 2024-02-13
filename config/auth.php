@@ -27,7 +27,7 @@ return [
      * Required OAuth2 access token scopes
      */
     'scopes' => [
-        'user.store.read user.settings.read',
+        'user.store.read user.settings.read labs.*',
     ],
 
     /*

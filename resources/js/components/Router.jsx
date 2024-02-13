@@ -21,7 +21,7 @@ const Router = ({apiStatus}) => {
                     // Gaming
                     <Route path={"/gaming/minecraft"} element={<Minecraft apiStatus={apiStatus}/>}/>
 
-                    <Route path={"/*"} element={<></>}/>
+                    <Route path={"/*"} element={<span id="not-found">404 | Not Found</span>}/>
                 </Route>
             </Routes>
         </AnimatePresence>
