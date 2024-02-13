@@ -25,3 +25,15 @@ Route::post('/initialize', [\App\Http\Controllers\Application\ApiController::cla
  * Logout user from application
  */
 Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
+
+Route::prefix('api')->middleware('token')->group(function () {
+    /**
+     * Forwards API requests
+     */
+    Route::post('/forward-request', [\App\Http\Controllers\Application\ForwardRequestController::class, 'forward'])->middleware('withauthorization');
+
+    Route::prefix('authorization-token')->group(function () {
+        Route::post('/', [\App\Http\Controllers\Application\AuthorizationTokenController::class, 'set']);
+        Route::post('/check', [\App\Http\Controllers\Application\AuthorizationTokenController::class, 'check']);
+    });
+});

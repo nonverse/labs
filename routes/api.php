@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -10,12 +11,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/**
- * Forwards API requests
- */
-Route::post('/forward-request', [\App\Http\Controllers\Application\ForwardRequestController::class, 'forward'])->middleware('withauthorization');
-
-Route::prefix('authorization-token')->group(function () {
-    Route::post('/', [\App\Http\Controllers\Application\AuthorizationTokenController::class, 'set']);
-    Route::post('/check', [\App\Http\Controllers\Application\AuthorizationTokenController::class, 'check']);
+Route::get('/', function () {
+    return new JsonResponse([
+        'application_name' => env('APP_NAME'),
+        'application_description' => 'Nonverse application programming interface',
+        'internal_identifier' => env('APP_IDENTIFIER'),
+        'environment' => 'closed_development',
+        'version' => env('APP_VERSION'),
+        'base_route' => '/labs',
+        'user' => null,
+    ]);
 });
