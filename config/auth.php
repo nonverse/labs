@@ -52,6 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'jwt' => [
+            'driver' => 'jwt',
+            'provider' => 'token'
+        ]
     ],
 
     /*
@@ -76,6 +80,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'token' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\RefreshToken::class
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
