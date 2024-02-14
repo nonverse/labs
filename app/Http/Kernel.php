@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\AddAuthorizationToken;
 use App\Http\Middleware\RefreshAccessToken;
+use App\Http\Middleware\VerifyProfile;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'token' => RefreshAccessToken::class,
         'withauthorization' => AddAuthorizationToken::class,
+        'profile' => VerifyProfile::class,
     ];
 }
