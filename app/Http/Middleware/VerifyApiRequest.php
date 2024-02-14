@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Exception;
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -28,8 +29,8 @@ class VerifyApiRequest
          */
 
         try {
-            $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('auth.public_key'), 'RS256'));
-        } catch (ExpiredException) {
+            $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('api.public_key'), 'RS256'));
+        } catch (Exception) {
             abort(401);
         }
 

@@ -28,7 +28,7 @@ class ApiServiceProvider extends ServiceProvider
     {
         Auth::viaRequest('jwt', function(Request $request) {
             if ($request->bearerToken()) {
-                $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('auth.public_key'), 'RS256'));
+                $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('api.public_key'), 'RS256'));
 
                 return $jwt['sub'] ? (new RefreshTokenRepository($this->app))->getUsingUserId($jwt['sub']) : new RefreshToken();
             }
