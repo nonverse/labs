@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::connection('minecraft')->create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
-            $table->uuid('mc_uuid');
+            $table->uuid()->unique();
+            $table->uuid('mc_uuid')->unique();
             $table->string('username');
-            $table->string('verifier');
+            $table->string('verifier')->nullable();
             $table->timestamp('verified_at')->nullable();
             $table->timestamps();
         });
