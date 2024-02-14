@@ -9,6 +9,8 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $connection = 'minecraft';
+
     /**
      * The primary key associated with the table
      *
