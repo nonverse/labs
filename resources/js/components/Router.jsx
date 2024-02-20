@@ -5,6 +5,7 @@ import Logo from "../elements/Logo.jsx";
 import Outlet from "./Outlet.jsx";
 import Gaming from "./Gaming/Gaming.jsx";
 import Minecraft from "./Gaming/Minecraft/Minecraft.jsx";
+import MinecraftOutlet from "./Gaming/Minecraft/MinecraftOutlet.jsx";
 
 const Router = ({apiStatus}) => {
 
@@ -19,7 +20,9 @@ const Router = ({apiStatus}) => {
                     <Route path={"/gaming"} element={<Gaming/>}/>
 
                     // Gaming
-                    <Route path={"/gaming/minecraft"} element={<Minecraft apiStatus={apiStatus}/>}/>
+                    <Route path={"/gaming/minecraft"} element={<MinecraftOutlet/>}>
+                        <Route path={"/gaming/minecraft"} element={<Minecraft apiStatus={apiStatus}/>}/>
+                    </Route>
 
                     <Route path={"/*"} element={<span id="not-found">404 | Not Found</span>}/>
                 </Route>
