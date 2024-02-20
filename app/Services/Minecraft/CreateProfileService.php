@@ -52,6 +52,6 @@ class CreateProfileService
             return $profile;
         }
 
-        throw new Exception('Minecraft username invalid', 422);
+        throw new Exception('Unable to find Minecraft user', 422);
     }
 }
