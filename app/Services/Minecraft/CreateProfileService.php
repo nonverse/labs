@@ -52,6 +52,6 @@ class CreateProfileService
             return $profile;
         }
 
-        throw new Exception('Minecraft username invalid');
+        throw new Exception('Minecraft username invalid', 422);
     }
 }
