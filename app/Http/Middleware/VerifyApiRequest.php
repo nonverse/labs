@@ -29,7 +29,7 @@ class VerifyApiRequest
          */
 
         try {
-            $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('api.public_key'), 'RS256'));
+            $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('api.xs_public_key'), 'RS256'));
         } catch (Exception) {
             abort(401);
         }

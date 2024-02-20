@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'public_key' => file_get_contents('../storage/api-public.key'),
+    'xs_public_key' => file_get_contents('../storage/api:xs-public.key'),
 ];

@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\RefreshToken;
-use App\Models\User;
 use App\Repositories\RefreshTokenRepository;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -26,11 +25,22 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Auth::viaRequest('jwt', function(Request $request) {
+        Auth::viaRequest('jwt', function (Request $request) {
             if ($request->bearerToken()) {
-                $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('api.public_key'), 'RS256'));
+                $jwt = (array)JWT::decode($request->bearerToken(), new Key(config('api.xs_public_key'), 'RS256'));
 
-                return $jwt['sub'] ? (new RefreshTokenRepository($this->app))->getUsingUserId($jwt['sub']) : new RefreshToken();
+                if (!$jwt['iss'] === env('API_SERVER')) {
+                    return new RefreshToken();
+                }
+
+                if (!$jwt['sub'] === env('APP_URL')) {
+                    return new RefreshToken();
+                }
+
+                if ($jwt['ttp'] === 'api:xs') {
+                    return $jwt['sub'] ? (new RefreshTokenRepository($this->app))->getUsingUserId($jwt['sub']) : new RefreshToken();
+                }
+
             }
             return new RefreshToken();
         });
