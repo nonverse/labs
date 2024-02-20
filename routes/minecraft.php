@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('profile')->group(function() {
     Route::post('/', [\App\Http\Controllers\Minecraft\MinecraftProfileController::class, 'create']);
+    Route::get('/', [\App\Http\Controllers\Minecraft\MinecraftProfileController::class, 'get']);
 });

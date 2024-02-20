@@ -2,25 +2,33 @@
 
 namespace App\Http\Controllers\Minecraft;
 
+use App\Contracts\Repository\Minecraft\MinecraftProfileRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Services\Minecraft\CreateProfileService;
 use Exception;
+use Illuminate\Container\EntryNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class MinecraftProfileController extends Controller
 {
+    /**
+     * @var MinecraftProfileRepositoryInterface
+     */
+
+    private MinecraftProfileRepositoryInterface $profileRepository;
     /**
      * @var CreateProfileService
      */
     private CreateProfileService $createProfileService;
 
     public function __construct(
-        CreateProfileService $createProfileService
+        MinecraftProfileRepositoryInterface $profileRepository,
+        CreateProfileService                $createProfileService
     )
     {
+        $this->profileRepository = $profileRepository;
         $this->createProfileService = $createProfileService;
     }
 
@@ -56,7 +64,7 @@ class MinecraftProfileController extends Controller
             return new JsonResponse([
                 'success' => false,
                 'errors' => $e->getMessage()
-            ], 400);
+            ], $e->getCode());
         }
 
         return new JsonResponse([
@@ -65,5 +73,26 @@ class MinecraftProfileController extends Controller
                 'username' => $profile->username
             ]
         ]);
+    }
+
+    /**
+     * Handle request to get user's Minecraft profile
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function get(Request $request): JsonResponse
+    {
+        try {
+            return new JsonResponse([
+                'success' => true,
+                'data' => $this->profileRepository->get($request->user()->uuid)
+            ]);
+        } catch (Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'error' => $e->getMessage()
+            ], $e->getCode());
+        }
     }
 }
