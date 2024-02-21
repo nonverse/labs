@@ -21,7 +21,7 @@ const MinecraftSetupUsername = ({advance, setData}) => {
                     advance()
                 })
                 .catch(e => {
-                    setError(e.response.data.errors)
+                    setError(e.response.data.errors ?? 'Something went wrong')
                 })
         }}>
             {({errors, isSubmitting}) => (
