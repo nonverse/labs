@@ -3,6 +3,7 @@ import Form from "../../../elements/Form.jsx";
 import DigitInput from "../../../elements/DigitInput.jsx";
 import validate from "../../../scripts/validate.js";
 import InLineButton from "../../../elements/InLineButton.jsx";
+import api from "../../../scripts/api.js";
 
 const MinecraftSetupConfirm = ({data}) => {
 
@@ -12,9 +13,9 @@ const MinecraftSetupConfirm = ({data}) => {
         }} onSubmit={() => {
 
         }}>
-            {({errors}) => (
+            {({errors, setSubmitting, isSubmitting}) => (
                 <div id="minecraft-setup-confirm">
-                    <Form id="screen-modal-form" cta="Submit">
+                    <Form loading={isSubmitting} id="screen-modal-form" cta="Submit">
                         <p className="text-center">
                             Login to the Nonverse Minecraft server using the account with username {data.username}
                             <br/><br/>
@@ -24,7 +25,13 @@ const MinecraftSetupConfirm = ({data}) => {
                             <br/>
                             <br/>
                             When you have successfully logged in,
-                            click <InLineButton>here</InLineButton> to send
+                            click <InLineButton onClick={async () => {
+                            setSubmitting(true)
+                            await api.post('labs/minecraft/profile/send-verification')
+                                .then(response => {
+                                    setSubmitting(false)
+                                })
+                        }}>here</InLineButton> to send
                             a one time code to your <br/> in-game chat and enter it below
                             <br/><br/>
                         </p>
