@@ -3,12 +3,13 @@
 namespace App\Models\Minecraft;
 
 use App\Services\HasVerification;
+use App\Services\Minecraft\UsesChat;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    use HasFactory, HasVerification;
+    use HasFactory, HasVerification, UsesChat;
 
     protected $connection = 'minecraft';
 

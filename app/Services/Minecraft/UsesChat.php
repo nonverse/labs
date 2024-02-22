@@ -2,6 +2,7 @@
 
 namespace App\Services\Minecraft;
 
+use App\Services\Minecraft\Server\MinecraftServerApiService;
 use Exception;
 use Illuminate\Support\Facades\Http;
 
@@ -12,7 +13,7 @@ trait UsesChat
      */
     public function sendMessage(string $message): void
     {
-        $response = Http::withToken('')->post($this->url(), [
+        $response = Http::withToken((new MinecraftServerApiService())->createSignedToken($this))->post($this->url(), [
             'message' => $message
         ]);
 
