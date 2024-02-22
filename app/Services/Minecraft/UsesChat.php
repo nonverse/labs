@@ -13,17 +13,17 @@ trait UsesChat
      */
     public function sendMessage(string $message): void
     {
-        $response = Http::withToken((new MinecraftServerApiService())->createSignedToken($this))->post($this->url(), [
+        $response = Http::withToken((new MinecraftServerApiService())->createSignedToken($this))->post($this->url() . '/player/message', [
             'message' => $message
         ]);
 
         if (!$response->successful()) {
-            throw new Exception("Failed to send message");
+            throw new Exception("Failed to send message", 500);
         }
     }
 
     private function url(): string
     {
-        return 'https://mc.labs.nonverse.' (env('APP_ENV') === 'local') ? 'test' : 'net' . '/player/message';
+        return 'https://mc.labs.nonverse.' . (env('APP_ENV') === 'local') ? 'test:81' : 'net';
     }
 }
