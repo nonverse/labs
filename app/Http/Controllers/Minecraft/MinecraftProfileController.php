@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Minecraft;
 
 use App\Contracts\Repository\Minecraft\MinecraftProfileRepositoryInterface;
 use App\Http\Controllers\Controller;
-use App\Services\Minecraft\CreateProfileService;
+use App\Services\Minecraft\CreateMinecraftProfileService;
 use Exception;
 use Illuminate\Container\EntryNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -19,13 +19,13 @@ class MinecraftProfileController extends Controller
 
     private MinecraftProfileRepositoryInterface $profileRepository;
     /**
-     * @var CreateProfileService
+     * @var CreateMinecraftProfileService
      */
-    private CreateProfileService $createProfileService;
+    private CreateMinecraftProfileService $createProfileService;
 
     public function __construct(
         MinecraftProfileRepositoryInterface $profileRepository,
-        CreateProfileService                $createProfileService
+        CreateMinecraftProfileService $createProfileService
     )
     {
         $this->profileRepository = $profileRepository;

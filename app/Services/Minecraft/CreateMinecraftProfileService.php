@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class CreateProfileService
+class CreateMinecraftProfileService
 {
     /**
      * @var MinecraftProfileRepositoryInterface
