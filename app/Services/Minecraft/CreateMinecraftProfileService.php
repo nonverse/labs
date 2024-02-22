@@ -38,7 +38,7 @@ class CreateMinecraftProfileService
 
             try {
                 $profile = $this->profileRepository->update($request->user()->user_id, [
-                    'mc_uuid' => $mcUuid,
+                    'mc_uuid' => substr($mcUuid, 0, 8) . '-' . substr($mcUuid, 8, 4) . '-' . substr($mcUuid, 12, 4) . '-' . substr($mcUuid, 16, 4) . '-' . substr($mcUuid, 20),
                     'username' => $username
                 ]);
             } catch (Exception $e) {
