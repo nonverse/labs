@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Profile routes
 Route::prefix('profile')->group(function() {
+    // Base
     Route::post('/', [\App\Http\Controllers\Minecraft\MinecraftProfileController::class, 'create']);
-    Route::get('/', [\App\Http\Controllers\Minecraft\MinecraftProfileController::class, 'get']);
+    Route::get('/', [\App\Http\Controllers\Minecraft\MinecraftProfileController::class, 'get'])->middleware('profile:minecraft');
+
+    // Verification
+    Route::post('/send-verification', [\App\Http\Controllers\Minecraft\MinecraftProfileVerificationController::class, 'send'])->middleware('profile:minecraft,unverified');
 });
