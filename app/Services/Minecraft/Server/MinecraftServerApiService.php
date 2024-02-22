@@ -15,10 +15,12 @@ class MinecraftServerApiService
      */
     public function createSignedToken(Profile $profile = null): string
     {
+        $aud = 'https://mc.labs.nonverse.test/'; // TODO Conditionally generate audience with .test or .net
+
         $payload = [
             'sub' => $profile?->mc_uuid,
             'iss' => env('APP_URL'),
-            'aud' => `https://mc.labs.nonverse.` . (env('APP_ENV') === 'local') ? 'test' : 'net',
+            'aud' => $aud,
             'iat' => time(),
             'exp' => time() + 60,
             'ttp' => 'labs:mc:xs'
