@@ -13,12 +13,12 @@ trait UsesChat
      */
     public function sendMessage(string $message): void
     {
-        $response = Http::withToken((new MinecraftServerApiService())->createSignedToken($this))->post($this->url() . '/player/message', [
+        $response = Http::withToken((new MinecraftServerApiService())->createSignedToken($this))->asForm()->post($this->url() . '/player/message', [
             'message' => $message
         ]);
 
         if (!$response->successful()) {
-            throw new Exception("Failed to send message", 500);
+            throw new Exception('Failed to send message', 500);
         }
     }
 
