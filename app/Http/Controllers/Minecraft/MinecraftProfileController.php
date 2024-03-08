@@ -86,7 +86,7 @@ class MinecraftProfileController extends Controller
         try {
             return new JsonResponse([
                 'success' => true,
-                'data' => $this->profileRepository->get($request->user()->uuid)
+                'data' => $this->profileRepository->get($request->user()->user_id)
             ]);
         } catch (Exception $e) {
             return new JsonResponse([

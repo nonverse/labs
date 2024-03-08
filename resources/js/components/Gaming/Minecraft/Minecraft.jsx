@@ -19,7 +19,7 @@ const Minecraft = ({apiStatus}) => {
 
     return (
         <>
-            {profile.uuid ? <></> : <MinecraftAbout apiStatus={apiStatus}/>}
+            {profile.verified_at ? <></> : <MinecraftAbout apiStatus={apiStatus}/>}
         </>
     )
 }
