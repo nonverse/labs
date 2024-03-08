@@ -20,4 +20,5 @@ Route::prefix('profile')->group(function() {
 
     // Verification
     Route::post('/send-verification', [\App\Http\Controllers\Minecraft\MinecraftProfileVerificationController::class, 'send'])->middleware('profile:minecraft,unverified');
+    Route::post('/verify', [\App\Http\Controllers\Minecraft\MinecraftProfileVerificationController::class, 'verify'])->middleware('profile:minecraft,unverified');
 });
