@@ -10,8 +10,11 @@ const MinecraftSetupConfirm = ({data}) => {
     return (
         <Formik initialValues={{
             code: ''
-        }} onSubmit={() => {
-
+        }} onSubmit={async (values) => {
+            await api.post('labs/minecraft/profile/verify', values)
+                .then(response => {
+                    window.location.reload()
+                })
         }}>
             {({errors, setSubmitting, isSubmitting}) => (
                 <div id="minecraft-setup-confirm">
